@@ -1,25 +1,18 @@
-import logo from './logo.svg';
 import './App.css';
+import { useState, React } from "react";
+import { MyContext } from "./MyContext";
+import CounterControls from "./CounterControls";
+import CounterDisplay from "./CounterDisplay"
 
 function App() {
+  const [counter, setCounter] = useState(0);
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <MyContext.Provider value={{ counter, setCounter }}>
+        <CounterDisplay/>
+        <CounterControls  />
+      </MyContext.Provider>
     </div>
   );
 }
-
 export default App;
